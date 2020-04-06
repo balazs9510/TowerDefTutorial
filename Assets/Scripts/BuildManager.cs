@@ -12,6 +12,7 @@ public class BuildManager : MonoBehaviour
     }
 
     public GameObject standardTurretPrefab;
+    public GameObject anotherTurretPrefab;
 
     private GameObject turretToBuild;
 
@@ -20,9 +21,8 @@ public class BuildManager : MonoBehaviour
         return turretToBuild;
     }
 
-    // Start is called before the first frame update
-    void Start()
+    public void SetTurretToBuild(GameObject turret)
     {
-        turretToBuild = standardTurretPrefab;
+        turretToBuild = turret;
     }
 }
