@@ -64,16 +64,18 @@ public class Bullet : MonoBehaviour
         {
             if (collider.tag == "Enemy")
             {
-                Damage(collider.transform);
+                float multiplier = 1 / Mathf.Abs(Vector3.Distance(transform.position, collider.transform.position));
+                multiplier = Mathf.Clamp01(multiplier);
+                Damage(collider.transform, multiplier);
             }
         }
     }
 
-    void Damage(Transform enemy)
+    void Damage(Transform enemy, float multiplier = 1)
     {
         Enemy e = enemy.GetComponent<Enemy>();
         if (e != null)
-            e.TakeDamage(damage);
+            e.TakeDamage(damage * multiplier);
     }
 
     void OnDrawGizmosSelected()

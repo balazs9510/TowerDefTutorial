@@ -12,10 +12,13 @@ public class PlayerStats : MonoBehaviour
     public static int Lives;
     public int startLives = 10;
 
+    public static int Rounds;
+
     void Start()
     {
         Money = startMoney;
         Lives = startLives;
+        Rounds = 0;
     }
 
     // Update is called once per frame
