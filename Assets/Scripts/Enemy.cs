@@ -6,6 +6,10 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public float speed = 10f;
+    public int healt = 100;
+    public int value = 20;
+
+    public GameObject deathEffect;
 
     private Transform target;
     private int wavepointIndex = 0;
@@ -26,15 +30,40 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    public void TakeDamage(int amount)
+    {
+        healt -= amount;
+
+        if (healt <= 0)
+        {
+            Die();
+        }
+    }
+
+    void Die()
+    {
+        PlayerStats.Money += value;
+
+        GameObject effect = Instantiate(deathEffect, transform.position, Quaternion.identity);
+        Destroy(effect, 5f);
+        Destroy(gameObject);
+    }
+
     private void GetNextWaypoint()
     {
-        if(wavepointIndex >= Waypoints.waypoints.Length -1)
+        if (wavepointIndex >= Waypoints.waypoints.Length - 1)
         {
-            Destroy(gameObject);
+            EndPath();
             return;
         }
 
         wavepointIndex++;
         target = Waypoints.waypoints[wavepointIndex];
+    }
+
+    void EndPath()
+    {
+        PlayerStats.Lives--;
+        Destroy(gameObject);
     }
 }
