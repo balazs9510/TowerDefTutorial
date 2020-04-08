@@ -6,15 +6,17 @@ using UnityEngine;
 public class BuildManager : MonoBehaviour
 {
     public static BuildManager instance;
-
+    public NodeUI nodeUI;
     void Awake()
     {
         instance = this;
     }
 
     public GameObject buildEffect;
+    public GameObject sellEffect;
 
     private TurretBlueprint turretToBuild;
+    private Node selectedNode;
 
     public bool CanBuild { get { return turretToBuild != null; } }
 
@@ -23,18 +25,33 @@ public class BuildManager : MonoBehaviour
     public void SelectTurretToBuild(TurretBlueprint turret)
     {
         turretToBuild = turret;
+        selectedNode = null;
+
+        nodeUI.Hide();
     }
 
-    public void BuildTurretOn(Node node)
+
+    public void SelectNode(Node node)
     {
-        if (PlayerStats.Money < turretToBuild.cost) return;
+        if (selectedNode == node)
+        {
+            DeselectNode();
+            return;
+        }
+        selectedNode = node;
+        turretToBuild = null;
 
-        PlayerStats.Money -= turretToBuild.cost;
+        nodeUI.SetTarget(node);
+    }
 
-        GameObject turret = Instantiate(turretToBuild.prefab, node.BuildPosition, Quaternion.identity);
-        node.turret = turret;
+    public void DeselectNode()
+    {
+        selectedNode = null;
+        nodeUI.Hide();
+    }
 
-        GameObject effect = Instantiate(buildEffect, node.BuildPosition, Quaternion.identity);
-        Destroy(effect, 5f);
+    public TurretBlueprint GetTurretToBuild()
+    {
+        return turretToBuild;
     }
 }
