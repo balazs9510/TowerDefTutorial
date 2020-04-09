@@ -32,17 +32,24 @@ public class Enemy : MonoBehaviour
 
         heathBar.fillAmount = health / startHealth;
 
-        if (health <= 0)
+        if (health <= 0 && !isDead)
         {
             Die();
         }
     }
 
+    private bool isDead = false;
+
     void Die()
     {
+        isDead = true;
+
         PlayerStats.Money += worth;
         GameObject effect = Instantiate(deathEffect, transform.position, Quaternion.identity);
         Destroy(effect, 5f);
+
+        WaveSpawner.EnemiesAlive--;
+
         Destroy(gameObject);
     }
 

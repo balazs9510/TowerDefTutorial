@@ -5,7 +5,8 @@ using UnityEngine.SceneManagement;
 public class PausedMenu : MonoBehaviour
 {
     public GameObject ui;
-
+    public SceneFader sceneFader;
+    public string menuSceneName = "MainMenu";
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
@@ -31,10 +32,11 @@ public class PausedMenu : MonoBehaviour
     public void Retry()
     {
         Toggle();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        sceneFader.FadeTo(SceneManager.GetActiveScene().name);
     }
     public void Menu()
     {
-        // Go to menu
+        Toggle();
+        sceneFader.FadeTo(menuSceneName);
     }
 }

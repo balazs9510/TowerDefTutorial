@@ -5,7 +5,16 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static bool gameIsOver = false;
+
     public GameObject gameOverUI;
+
+    public GameObject completeLevelUI;
+
+    public string nextLevel = "Level02";
+
+    public int levelToUnlock = 2;
+
+    public SceneFader sceneFader;
 
     void Update()
     {
@@ -27,5 +36,11 @@ public class GameManager : MonoBehaviour
     {
         gameIsOver = true;
         gameOverUI.SetActive(true);
+    }
+
+    public void LevelWon()
+    {
+        gameIsOver = true;
+        completeLevelUI.SetActive(true);
     }
 }
