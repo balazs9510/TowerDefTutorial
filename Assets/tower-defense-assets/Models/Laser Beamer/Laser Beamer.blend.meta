@@ -3,6 +3,24 @@ guid: 43a105a827b156f4698a0da9cd9370ff
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
+    100000: //RootNode
+    100002: Stand
+    100004: Turret
+    400000: //RootNode
+    400002: Stand
+    400004: Turret
+    2100000: Bolts
+    2100002: Stand
+    2100004: Pipe
+    2100006: Main Turret
+    2100008: Turret Accent
+    2300000: Stand
+    2300002: Turret
+    3300000: Stand
+    3300002: Turret
+    4300000: Stand
+    4300002: Turret
+    9500000: //RootNode
     2186277476908879412: ImportLogs
   externalObjects: {}
   materials:
@@ -57,7 +75,7 @@ ModelImporter:
     secondaryUVPackMargin: 4
     useFileScale: 1
     previousCalculatedGlobalScale: 1
-    hasPreviousCalculatedGlobalScale: 0
+    hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0

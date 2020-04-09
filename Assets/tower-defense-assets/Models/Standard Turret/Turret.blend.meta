@@ -3,6 +3,22 @@ guid: 455ae48c701fdd84894579e954d7041b
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
+    100000: //RootNode
+    100002: Turret
+    100004: Turret.001
+    400000: //RootNode
+    400002: Turret
+    400004: Turret.001
+    2100000: Turret_Metal
+    2100002: Turret_Metal2
+    2100004: Turret_GunMetal
+    2300000: Turret
+    2300002: Turret.001
+    3300000: Turret
+    3300002: Turret.001
+    4300000: Turret.001
+    4300002: Turret
+    9500000: //RootNode
     2186277476908879412: ImportLogs
   externalObjects: {}
   materials:
@@ -57,7 +73,7 @@ ModelImporter:
     secondaryUVPackMargin: 4
     useFileScale: 1
     previousCalculatedGlobalScale: 1
-    hasPreviousCalculatedGlobalScale: 0
+    hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0

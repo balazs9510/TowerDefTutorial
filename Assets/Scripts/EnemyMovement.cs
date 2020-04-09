@@ -9,6 +9,9 @@ public class EnemyMovement : MonoBehaviour
     private int wavepointIndex = 0;
     private Enemy enemy;
 
+    [Header("Optional")]
+    public Transform partToRotate;
+
     void Start()
     {
         enemy = GetComponent<Enemy>();
@@ -17,8 +20,13 @@ public class EnemyMovement : MonoBehaviour
 
     void Update()
     {
+        if (enemy.isDead) return;
+
         Vector3 dir = target.position - transform.position;
         transform.Translate(dir.normalized * enemy.speed * Time.deltaTime, Space.World);
+
+        if (partToRotate != null)
+            partToRotate.LookAt(target);
 
         if (Vector3.Distance(transform.position, target.position) <= 0.4f)
         {

@@ -46,13 +46,17 @@ public class Turret : MonoBehaviour
         float shortestDistance = Mathf.Infinity;
         GameObject nearestEnemy = null;
 
-        foreach (var enemy in enemies)
+        foreach (var enemyGO in enemies)
         {
+            var enemy = enemyGO.GetComponent<Enemy>();
             float distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
             if (distanceToEnemy < shortestDistance)
             {
-                shortestDistance = distanceToEnemy;
-                nearestEnemy = enemy;
+                if (!enemy.isDead)
+                {
+                    shortestDistance = distanceToEnemy;
+                    nearestEnemy = enemy.gameObject;
+                }
             }
 
             if (nearestEnemy != null && shortestDistance <= range)
@@ -138,6 +142,8 @@ public class Turret : MonoBehaviour
 
     void Shoot()
     {
+        if (targetEnemy.isDead) UpdateTarget();
+
         GameObject bulletGO = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         Bullet bullet = bulletGO.GetComponent<Bullet>();
 

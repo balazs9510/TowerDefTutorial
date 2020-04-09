@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
+
 public class Enemy : MonoBehaviour
 {
     public float startSpeed = 10f;
-    
+
     [HideInInspector]
     public float speed;
 
@@ -15,10 +13,13 @@ public class Enemy : MonoBehaviour
 
     public int worth = 20;
 
+    [Header("Optional")]
     public GameObject deathEffect;
+    public Animator playerAnimator;
 
     [Header("Unity Stuff")]
     public Image heathBar;
+    public Canvas healthBarCanvas;
 
     void Start()
     {
@@ -38,19 +39,32 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private bool isDead = false;
+    [HideInInspector]
+    public bool isDead = false;
 
     void Die()
     {
         isDead = true;
 
         PlayerStats.Money += worth;
-        GameObject effect = Instantiate(deathEffect, transform.position, Quaternion.identity);
-        Destroy(effect, 5f);
+        if (deathEffect != null)
+        {
+            GameObject effect = Instantiate(deathEffect, transform.position, Quaternion.identity);
+            Destroy(effect, 5f);
+
+            Destroy(gameObject);
+        }
+        else
+        {
+            playerAnimator.SetBool("die", true);
+            healthBarCanvas.enabled = false;
+
+            Destroy(gameObject, 1f);
+        }
 
         WaveSpawner.EnemiesAlive--;
 
-        Destroy(gameObject);
+        
     }
 
     public void Slow(float percentage)

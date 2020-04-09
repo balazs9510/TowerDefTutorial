@@ -3195,22 +3195,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waves:
-  - enemyPrefab: {fileID: 4590931271366147601, guid: 92cc268b6f0229148b50de7db2f7885f,
+  - enemyPrefab: {fileID: 8898977958579536241, guid: 0025b338216de874995374557e342f39,
       type: 3}
-    count: 1
+    count: 30
     rate: 2
-  - enemyPrefab: {fileID: 4590931271366147601, guid: 92cc268b6f0229148b50de7db2f7885f,
+  - enemyPrefab: {fileID: 8898977958579536241, guid: 0025b338216de874995374557e342f39,
       type: 3}
-    count: 4
-    rate: 2
-  - enemyPrefab: {fileID: 4590931271366147601, guid: 92cc268b6f0229148b50de7db2f7885f,
+    count: 20
+    rate: 5
+  - enemyPrefab: {fileID: 3951190770008173448, guid: fc167470507a22841ab2367f0c093363,
       type: 3}
-    count: 6
-    rate: 2.5
-  - enemyPrefab: {fileID: 4590931271366147601, guid: 1055ca8db156d464cbd320e6bfe5df3a,
-      type: 3}
-    count: 2
+    count: 10
     rate: 1
+  - enemyPrefab: {fileID: 3951190770008173448, guid: fc167470507a22841ab2367f0c093363,
+      type: 3}
+    count: 10
+    rate: 2
   - enemyPrefab: {fileID: 4590931271366147601, guid: 9201bda3b7a6da9489db35ecca23ebd4,
       type: 3}
     count: 6
